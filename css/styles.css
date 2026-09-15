@@ -17,8 +17,19 @@ h1{
     font-weight: 700;
     padding: 30px 20px 10px;
     margin: 0 auto;
-    border-radius: 20px 20px 0 0;
     max-width: 600px;
+}
+.start_page{
+    background: white;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 auto;
+    padding: 0px 0px;
+    max-width: 600px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    border-radius: 20px 20px 0 0;
 }
 h2{
     background: white;
@@ -89,6 +100,7 @@ p{
 .main {
     position: relative;
     z-index: 2;
+    transition: opacity 0.7s ease;
 }
 
 .alias {
@@ -97,14 +109,27 @@ p{
     transform: translateX(-50%) rotate(0deg);
     z-index: 1;
     opacity: 0;
-    transition: transform 0.65s ease, opacity 0.6s ease;
+    
 }
 
 /* On hover of main, alias slides right + tilts */
+.main:hover{
+    opacity: 0;
+
+}
 .main:hover ~ .alias {
     opacity: 1;
-    transform: translateX(40%) rotate(30deg);
 }
+.main:hover ~ #change_image_text .texto-normal{
+    display: none;
+}
+.texto-hover{
+    display: none;
+}
+.main:hover ~ #change_image_text .texto-hover{
+    display: inline;
+}
+
 
 ul{
     list-style-type: none;

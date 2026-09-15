@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<audio id="bg-music" autoplay loop>
+<body>
+
+<audio id="bg-music" loop>
     <source src="audio_files/background music.mp3" type="audio/mpeg">
 </audio>
 
-<body>
-
+<h1 class="start_page" style="color: red;">ATENCION</h1>
+<p style="font-size: 1rem; background: rgb(199, 196, 159);">esta pagina web tiene musica pero por limitaciones del navegador no se reproucira hasta que interactue con la pagina</p>
 <h1>Miguel Alfonso Contreras Angarita - fennek</h1>
 <h2 class="subtitulo">Aprendiz de Análisis y Desarrollo de Software</h2>
 
@@ -28,7 +30,10 @@
     <img src="img/personal_image.png" alt="Foto de perfil" class="foto-perfil main">
     <img src="img/allias_image.png" alt="Foto de perfil allias" class="foto-perfil alias">
     <br>
-    <p style="font-size: 15px;">psst pasa el mouse encima de mi foto</p>
+    <p style="font-size: 15px;" id="change_image_text">
+        <span class="texto-normal">psst pasa el mouse encima de mi foto</span>
+        <span class="texto-hover">SOY YO.. o bueno mi alterego</span>
+    </p>
 </div>   
 
 <h2>Mis habilidades</h2>
@@ -50,10 +55,14 @@
 
 <h2>Mis Proyectos</h2>
 <ul>
+    <a class="external_link" href="https://github.com/ifennekthefoxi-eng/fennek_dev_page" target="_blank">
+        <i class="fa-brands fa-github"></i>
+        <span>esta pagina</span>
+    </a>
     <a class="external_link" href="https://github.com/ifennekthefoxi-eng/Create-Aeronautics-Car-Works" target="_blank">
-    <i class="fa-brands fa-github"></i>
-    <span>CACW-minecraft mod</span>
-</a>
+        <i class="fa-brands fa-github"></i>
+        <span>CACW-minecraft mod</span>
+    </a>
 </ul>
 
 <h2>Mis links</h2>
@@ -72,4 +81,29 @@
 <footer>
 
 </footer>
+
+<script>
+    const bgMusic = document.getElementById("bg-music");
+
+    // Intenta reproducir apenas carga la página
+    function intentarReproducir() {
+        bgMusic.play().catch(() => {
+            // El navegador bloqueó el autoplay: se activará
+            // con la primera interacción del usuario (clic, tecla o scroll)
+            const activarConInteraccion = () => {
+                bgMusic.play();
+                document.removeEventListener("click", activarConInteraccion);
+                document.removeEventListener("keydown", activarConInteraccion);
+                document.removeEventListener("scroll", activarConInteraccion);
+            };
+            document.addEventListener("click", activarConInteraccion);
+            document.addEventListener("keydown", activarConInteraccion);
+            document.addEventListener("scroll", activarConInteraccion);
+        });
+    }
+
+    intentarReproducir();
+</script>
+
+</body>
 </html>
